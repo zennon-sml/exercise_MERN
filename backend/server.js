@@ -12,12 +12,12 @@ const port = process.env.PORT || 4444;
 
 const uri = process.env.ATLAS_URI;
 
-//mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true});
+mongoose.connect(uri, {});
 
-//const connection = mongoose.connection;
-//connection.once("open", () => {
-//    console.log("mongoDB con estabilished");
-//})
+const connection = mongoose.connection;
+connection.once('open', () => {
+    console.log("mongoDB con estabilished");
+})
 
 const exerciseRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
