@@ -6,60 +6,54 @@ export default class ExerciseList extends Component{
     constructor(props) {
         super(props);
 
-        this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.onChangeDuration = this.onChangeDuration.bind(this);
-        this.onChangeDate = this.onChangeDate.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-
         this.state = {
-            username: '',
-            description: '',
+            username: "",
+            description: "",
             duration: 0,
             date: new Date(),
             users: []
-        }
+        };
     }
-    componentDidMount(){
+    componentDidMount() {
         this.setState({
-            users: ['test user1', 'test user2', 'test user3'],
-            username: 'test user1'
+            users: ["test user1", "test user2", "test user3"],
+            username: "test user1"
         })
-    }
+    };
 
-    onChangeUsername(e) {
+    onChangeUsername = (e) => {
         this.setState({
             username: e.target.value
         });
-    }
-    onChangeDescription(e) {
+    };
+    onChangeDescription = (e) => {
         this.setState({
-            description: e.targe.value
+            description: e.target.value
         });
     }
-    onChangeDuration(e) {
+    onChangeDuration = (e) => {
         this.setState({
-            duration: e.targe.value
+            duration: e.target.value
         });
     }
-    onChangeDate(date) {
+    onChangeDate = (date) => {
         this.setState({
             date: date
         });
     }
 
-    onSubmit(e) {
+    onSubmit = (e) => {
         e.preventDefault();
         const exercise = {
             username: this.state.username,
             description: this.state.description,
             duration: this.state.duration,
             date: this.state.date
-        }
+        };
 
         console.log(exercise);
 
-        window.location = '/';
+        // window.location = '/';
     }
 
     render() {
