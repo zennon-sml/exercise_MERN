@@ -16,13 +16,14 @@ export default class ExerciseList extends Component{
         };
     }
     componentDidMount() {
-        axios.get('http://localhost:4444/users/')
+        axios.get("http://localhost:4444/users/")
           .then(response => {
-            if(response.data.lenght > 0){
+            if(response.data.length > 0){
               this.setState({
                 users: response.data.map(user => user.username),
-                username: response.data[0]
+                username: response.data[0].username
               })
+              console.log(response.data.map(user => user.username));
             }
           })
     };
