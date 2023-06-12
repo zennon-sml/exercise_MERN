@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -15,10 +16,15 @@ export default class ExerciseList extends Component{
         };
     }
     componentDidMount() {
-        this.setState({
-            users: ["test user1", "test user2", "test user3"],
-            username: "test user1"
-        })
+        axios.get('http://localhost:4444/users/')
+          .then(response => {
+            if(response.data.lenght > 0){
+              this.setState({
+                users: response.data.map(user => user.username),
+                username: response.data[0]
+              })
+            }
+          })
     };
 
     onChangeUsername = (e) => {
@@ -52,6 +58,8 @@ export default class ExerciseList extends Component{
         };
 
         console.log(exercise);
+        axios.post("http://localhost:4444/exercises/add", exercise)
+          .then(res => console.log(res.data));
 
         // window.location = '/';
     }
