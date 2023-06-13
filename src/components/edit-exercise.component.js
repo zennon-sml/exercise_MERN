@@ -7,7 +7,6 @@ export default class EditExercise extends Component {
   constructor(props) {
     super(props);
 
-
     this.state = {
       username: '',
       description: '',
