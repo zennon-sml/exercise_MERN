@@ -30,7 +30,6 @@ export default class ExercisesList extends Component{
             .catch(error => {
                 console.error("Error fetching exercises data:", error);
             });
-        
     }
 
     deleteExercise = (id) => {

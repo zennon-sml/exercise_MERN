@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Navbar from "./components/navbar.component"
+import Navbar from "./components/navbar.component";
 import ExercisesList from "./components/exercises-list.component";
 import EditExercise from "./components/edit-exercise.component";
 import CreateExercise from "./components/create-exercise.component";
@@ -12,12 +12,15 @@ function App() {
   return (
     <div className="container">
       <BrowserRouter>
-      <Navbar />
+        <Navbar />
         <Routes>
-          <Route path="/" exact Component={ExercisesList} />
-          <Route path="/edit/:id" Component={EditExercise} />
-          <Route path="/create" Component={CreateExercise} />
-          <Route path="/user" Component={CreateUser} />
+          <Route path="/" element={<ExercisesList />} />
+          <Route
+            path="/edit/:id"
+            element={({ params }) => <EditExercise match={params} />}
+          />
+          <Route path="/create" element={<CreateExercise />} />
+          <Route path="/user" element={<CreateUser />} />
         </Routes>
       </BrowserRouter>
     </div>
